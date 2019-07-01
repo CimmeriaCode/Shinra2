@@ -25,7 +25,15 @@ namespace ShinraCo.Spells.Main
             SpellType = SpellType.Heal,
             CastType = CastType.Self
         };
-
+        public Spell Aetherflow { get; } = new Spell
+        {
+            Name = "Aetherflow",
+            ID = 166,
+            Level = 45,
+            GCDType = GCDType.Off,
+            SpellType = SpellType.Cooldown,
+            CastType = CastType.Self
+        };
         public Spell SacredSoil { get; } = new Spell
         {
             Name = "Sacred Soil",

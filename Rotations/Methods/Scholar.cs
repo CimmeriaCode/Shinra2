@@ -119,15 +119,6 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        private async Task<bool> ShadowFlare()
-        {
-            if (ShinraEx.Settings.ScholarShadowFlare && !MovementManager.IsMoving)
-            {
-                return await MySpells.ShadowFlare.Cast(null, false);
-            }
-            return false;
-        }
-
         private async Task<bool> ChainStrategem()
         {
             if (ShinraEx.Settings.ScholarChainStrategem)
@@ -150,14 +141,6 @@ namespace ShinraCo.Rotations
             return false;
         }
 
-        private async Task<bool> Rouse()
-        {
-            if (ShinraEx.Settings.ScholarRouse && Helpers.HealManager.Any(hm => hm.CurrentHealthPercent < 80))
-            {
-                return await MySpells.Rouse.Cast(null, false);
-            }
-            return false;
-        }
 
         #endregion
 

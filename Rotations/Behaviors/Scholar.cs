@@ -29,12 +29,7 @@ namespace ShinraCo.Rotations
             if (await Summon()) return true;
             if (await Aetherflow()) return true;
             if (await LucidDreaming()) return true;
-            if (await Rouse()) return true;
-            if (await ChainStrategem()) return true;
-            if (await ClericStance()) return true;
-            if (await Bane()) return true;
-            if (await EnergyDrain()) return true;
-            return await ShadowFlare();
+            return await ChainStrategem();
         }
 
         #endregion

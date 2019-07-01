@@ -54,10 +54,6 @@ namespace ShinraCo
             {
                 healList.Add(Core.Player);
             }
-            if (Core.Player.Pet != null && (int)PetManager.ActivePetType < 10)
-            {
-                healList.Add(Core.Player.Pet);
-            }
             if (ChocoboManager.Object != null)
             {
                 healList.Add(ChocoboManager.Object);
