@@ -15,6 +15,7 @@ namespace ShinraCo.Rotations
             if (await BioII()) return true;
             if (await Bio()) return true;
             if (await BrandOfPurgatory()) return true;
+            if (await FountainOfFire()) return true;
             if (await RuinII()) return true;
             if (await Outburst()) return true;
             if (await RuinIII()) return true;
@@ -36,11 +37,11 @@ namespace ShinraCo.Rotations
             //if (await Summon()) return true;
             if (await EnkindleBahamut()) return true;
             if (await SummonBahamut()) return true;
+            if (await TriDisaster()) return true;
             if (await EnkindlePhoenix()) return true;
             if (await FirebirdTrance()) return true;
             if (await Deathflare()) return true;
             if (await DreadwyrmTrance()) return true;
-            if (await TriDisaster()) return true;
             if (await Bane()) return true;
             if (await Aetherpact()) return true;
             if (await Painflare()) return true;

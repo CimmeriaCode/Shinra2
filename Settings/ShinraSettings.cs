@@ -99,7 +99,7 @@ namespace ShinraCo.Settings
     public class ShinraSettings : JsonSettings
     {
         [JsonIgnore]
-        public static ShinraSettings Instance { get; } = new ShinraSettings("ShinraSettings");
+        public static ShinraSettings Instance { get; } = new ShinraSettings("ShinraExSettings");
         private ShinraSettings(string filename) : base(Path.Combine(CharacterSettingsDirectory, filename + ".json")) { }
 
         #region Form Settings

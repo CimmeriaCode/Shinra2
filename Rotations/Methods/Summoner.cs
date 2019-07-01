@@ -31,8 +31,10 @@ namespace ShinraCo.Rotations
 
         private async Task<bool> RuinII()
         {
-            if (Spell.RecentSpell.ContainsKey(MySpells.DreadwyrmTrance.Name))
+            
+            if (Spell.RecentSpell.ContainsKey(MySpells.DreadwyrmTrance.Name) || Core.Player.HasAura("Everlasting Flight"))
                 return false;
+            
 
             if (MovementManager.IsMoving ||
                 Core.Player.HasAura("Further Ruin") ||
@@ -43,7 +45,8 @@ namespace ShinraCo.Rotations
                 ResourceArcanist.Aetherflow == 0 && 
                 MySpells.EnergyDrain.Cooldown() <= 0 ||                
                 ActionManager.CanCast(MySpells.SummonBahamut.Name, Core.Player) ||
-                ActionManager.CanCast(MySpells.DreadwyrmTrance.Name, Core.Player))
+                ActionManager.CanCast(MySpells.DreadwyrmTrance.Name, Core.Player) ||
+                ActionManager.CanCast(MySpells.FirebirdTrance.Name, Core.Player))
             {
                 return await MySpells.RuinII.Cast();
             }
@@ -55,14 +58,24 @@ namespace ShinraCo.Rotations
             return await MySpells.RuinIII.Cast();
         }
 
-        private async Task<bool> BrandOfPurgatory()
+        private async Task<bool> FountainOfFire()
         {
-            if (ActionManager.LastSpell.Name == MySpells.FountainOfFire.Name && Resource.Timer.TotalMilliseconds > 1000)
+            if (Core.Player.HasAura("Everlasting Flight"))
             {
                 return await MySpells.BrandOfPurgatory.Cast();
             }
             return false;
         }
+
+        private async Task<bool> BrandOfPurgatory()
+        {
+            if (Core.Player.HasAura("Hellish Conduit") &&  Resource.Timer.TotalMilliseconds >= 1500)
+            {
+                return await MySpells.BrandOfPurgatory.Cast();
+            }
+            return false;
+        }
+
 
         #endregion
 
@@ -546,9 +559,10 @@ namespace ShinraCo.Rotations
         private static bool RecentBahamut => Spell.RecentSpell.ContainsKey("Summon Bahamut"); //|| (int)PetManager.ActivePetType == 10;
         private static bool PetExists => Core.Player.Pet != null;
 
-        private static bool UseTriDisaster => ShinraEx.Settings.SummonerTriDisaster &&
+        private  bool UseTriDisaster => ShinraEx.Settings.SummonerTriDisaster &&
                                               (!Core.Player.CurrentTarget.HasAura(BioDebuff, true, 3000) ||
-                                               !Core.Player.CurrentTarget.HasAura(MiasmaDebuff, true, 3000));
+                                               !Core.Player.CurrentTarget.HasAura(MiasmaDebuff, true, 3000) ||
+                                                (MySpells.DreadwyrmTrance.Cooldown()  < 10) || MySpells.FirebirdTrance.Cooldown() < 10);
 
         private bool AetherLow => ResourceArcanist.Aetherflow == 1 &&
                                     DataManager.GetSpellData(166).Cooldown.TotalMilliseconds > 8000;

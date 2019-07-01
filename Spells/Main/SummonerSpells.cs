@@ -323,7 +323,7 @@ namespace ShinraCo.Spells.Main
 
         public Spell BrandOfPurgatory { get; } = new Spell
         {
-            Name = "Brand Of Purgator",
+            Name = "Brand Of Purgatory",
             ID = 16515,
             Level = 72,
             GCDType = GCDType.On,

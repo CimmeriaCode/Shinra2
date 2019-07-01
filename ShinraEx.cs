@@ -289,6 +289,11 @@ namespace ShinraCo
             return true;
         }
 
+        public static void Log(string message)
+        {
+            Logging.Write(Colors.Pink, message);
+        }
+
         #endregion
 
         #region Stance
